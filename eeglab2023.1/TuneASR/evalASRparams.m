@@ -13,11 +13,11 @@
 %
 % Velu Prabhakar Kumaravel, FBK/CIMeC (UNITN), Italy
 
-function [measure, error_log] = evalASRparams(loc_in, fname_in, k_in_array, process_array, @measure)
+function [metric, error_log] = evalASRparams(loc_in, fname_in, k_in_array, process_array)
 
 
 EEG = pop_loadset('filename', fname_in,'filepath', loc_in);
-measure = zeros(length(k_in_array), 1);
+metric = zeros(length(k_in_array), 1);
 
 
 for p = 1:length(k_in_array)
@@ -34,16 +34,18 @@ for p = 1:length(k_in_array)
         
         disp('Use EEG1 to perform your post-processing here: epoching, computing psd measures etc.,');
 
-        measure(p) = @measure(EEG_current); % Compute your measure using EEG_current and save it here.
+        metric(p) = computeMetric(EEG_current); % Compute your measure using EEG_current and save it here.
         error_log{p} = 'Success';
         
         
     catch Error
         error_log{p} = Error.message;
         disp(Error);
-        measure(p) = 0;
+        metric(p) = 0;
     end
     
 end
 
-end
+function signal_to_noise_ratio = computeMetric(EEG)
+
+signal_to_noise_ratio = randi(100,1,1); % replace this line of code with your definition (e.g., Alpha-peak)

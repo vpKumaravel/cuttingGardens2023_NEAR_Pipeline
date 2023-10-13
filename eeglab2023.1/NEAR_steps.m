@@ -1,8 +1,8 @@
-% main.m -NEAR Tutorial Script
+% NEAR_steps.m -NEAR Tutorial Script
 %
 % See: https://github.com/vpKumaravel/vpKumaravel.github.io/wiki/Step-by-step-Tutorial-on-Newborns-EEG-Artifact-Removal-(NEAR)-pipeline
-% Author: Velu Prabhakar Kumaravel (FBK; UNITN, Italy, 2018-)
-% email: vkumaravel@fbk.eu
+% Author: Velu Prabhakar Kumaravel (FBK; UNITN, Italy, 2018-2023)
+% email: vpr.kumaravel@gmail.com
 % Website: https://github.com/vpKumaravel/vpKumaravel.github.io/wiki/Step-by-step-Tutorial-on-Newborns-EEG-Artifact-Removal-(NEAR)-pipeline
 % Feb 2022; 
 

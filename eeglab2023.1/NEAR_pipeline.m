@@ -1,11 +1,9 @@
-% main_all.m -NEAR Tutorial Script (Wrapper for executing all functions)
+% NEAR_pipeline.m -NEAR Tutorial Script (Wrapper for executing all functions)
 %
-% See: https://github.com/vpKumaravel/vpKumaravel.github.io/wiki/Step-by-step-Tutorial-on-Newborns-EEG-Artifact-Removal-(NEAR)-pipeline
 %
-% Author: Velu Prabhakar Kumaravel (FBK; UNITN, Italy, 2018-)
-% email: vkumaravel@fbk.eu
-% Website: https://github.com/vpKumaravel/vpKumaravel.github.io/wiki/Step-by-step-Tutorial-on-Newborns-EEG-Artifact-Removal-(NEAR)-pipeline
-% Feb 2022; 
+% Author: Velu Prabhakar Kumaravel (FBK; UNITN, Italy, 2018-2023)
+% email: vpr.kumaravel@gmail.com
+
 
 %% Example:
 
@@ -31,7 +29,7 @@
 % params.baseline_window = [];
 % params.interpolType = 'spherical';
 % 
-% outEEG = preprocessNEAR(params);
+% outEEG = NEAR_pipeline(params);
 
 
 function outEEG = NEAR_pipeline(params)

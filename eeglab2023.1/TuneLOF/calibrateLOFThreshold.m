@@ -13,8 +13,8 @@ list_sub = {'sub-09_ses-03_task-offlinecatch_run-04_filtered' };
 ext = '.set';
 
 list_labels = {'sub-09_ses-03_task-offlinecatch_run-04_labels'};
-filepath =cd;
-labelpath = cd;
+filepath = 'C:\Users\velu.kumaravel\Desktop\Data Drive\Code\GIT\cuttingGardens2023_NEAR_Pipeline\eeglab2023.1\TuneLOF';
+labelpath = filepath;
 
 
 LOF_calibrate = []; % output struct file
@@ -32,7 +32,7 @@ for eachfile = 1:numel(list_sub)
     %% Step 2) Add channel locations and other required preprocessing steps such as Filtering
     
     % Since the example data is already imported with channel locations,
-    % and filiter, I am skipping this step here.
+    % and filter, I am skipping this step here.
     
     %% Step 3) Extract ground truth labels
     
@@ -46,7 +46,7 @@ for eachfile = 1:numel(list_sub)
 
     %% Step 4) Perform NEAR Bad Channel Detection
 
-    list_threshold = 1:0.1:5;
+    list_threshold = 1:0.1:1.5; %1:0.1:5;
     
     for iThreshold = list_threshold % list of threshold values you want to explore. N.B. The lower limit should be >= 1.
         
