@@ -9,11 +9,11 @@ clc; clear all; eeglab;
 
 
 %%
-list_sub = {'sub-09_ses-03_task-offlinecatch_run-04_filtered' };
+list_sub = {'s5_filt_segt' };
 ext = '.set';
 
-list_labels = {'sub-09_ses-03_task-offlinecatch_run-04_labels'};
-filepath = 'C:\Users\velu.kumaravel\Desktop\Data Drive\Code\GIT\cuttingGardens2023_NEAR_Pipeline\eeglab2023.1\TuneLOF';
+list_labels = {'s5_labels'};
+filepath = '.\TuneLOF';
 labelpath = filepath;
 
 
@@ -29,24 +29,24 @@ for eachfile = 1:numel(list_sub)
     EEG = eeg_checkset( EEG );
     
     
-    %% Step 2) Add channel locations and other required preprocessing steps such as Filtering
+    %% Step 2a) Add channel locations and other required preprocessing steps such as Filtering
     
     % Since the example data is already imported with channel locations,
-    % and filter, I am skipping this step here.
-    
+    % skipping the step
+
     %% Step 3) Extract ground truth labels
     
     
     g_t = zeros(1,EEG.nbchan); % declaring ground truth vector
     disp(eachfile);
-    T = readtable([labelpath filesep list_labels{eachfile} '.csv']); % read label file corresponding to the current EEG file
+    T = readtable([labelpath filesep list_labels{eachfile} '.xlsx']); % read label file corresponding to the current EEG file
 
-    groundTruth = T.x0'; % where x0, in this example, contains the list of 0s and 1s in the .csv file. (1 indicates bad channels)
+    groundTruth = T.labels'; % where x0, in this example, contains the list of 0s and 1s in the .csv file. (1 indicates bad channels)
     g_t(find(groundTruth)) = 1;
 
     %% Step 4) Perform NEAR Bad Channel Detection
 
-    list_threshold = 1:0.1:1.5; %1:0.1:5;
+    list_threshold = 1:0.5:5;
     
     for iThreshold = list_threshold % list of threshold values you want to explore. N.B. The lower limit should be >= 1.
         
@@ -72,8 +72,10 @@ for eachfile = 1:numel(list_sub)
         Precision = (TP/(TP+FP));
         Recall = Sensitivity;
         F1_scoreNEAR = (2*Precision*Recall)/(Precision+Recall);
-        
-        fprintf('F1 score is %s\n', F1_scoreNEAR);
+        if(isnan(F1_scoreNEAR))
+            F1_scoreNEAR = 0.0;
+        end
+        fprintf('F1 score is %f\n', F1_scoreNEAR);
         
         % Saving the metrics
         LOF_calibrate(counter).Subject = {list_sub{eachfile}};
