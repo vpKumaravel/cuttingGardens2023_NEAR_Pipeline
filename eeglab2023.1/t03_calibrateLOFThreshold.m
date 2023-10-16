@@ -1,18 +1,13 @@
-%% Important Note:
-% the sample dataset uploaded here is available on: https://openneuro.org/datasets/ds002034/versions/1.0.1
-
-clc; clear all; eeglab; 
 % 1) please ensure eeglab is accessible by MATLAB 
 % 2) please ensure that NEAR_ChannelRejection-master folder is put inside
 % the plugins folder of EEGLAB
 
-
-
+clc; clear all; eeglab; 
 %%
-list_sub = {'s5_filt_segt' };
+list_sub = {'s5_filt_segt' }; % add more files as comma separated values
 ext = '.set';
 
-list_labels = {'s5_labels'};
+list_labels = {'s5_labels'}; % add more files as comma separated values
 filepath = '.\TuneLOF';
 labelpath = filepath;
 
@@ -46,7 +41,7 @@ for eachfile = 1:numel(list_sub)
 
     %% Step 4) Perform NEAR Bad Channel Detection
 
-    list_threshold = 1:0.5:5;
+    list_threshold = 1:0.5:5; % LOF optimal threshold grid-search
     
     for iThreshold = list_threshold % list of threshold values you want to explore. N.B. The lower limit should be >= 1.
         

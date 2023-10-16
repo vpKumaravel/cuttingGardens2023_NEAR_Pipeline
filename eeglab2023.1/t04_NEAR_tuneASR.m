@@ -1,8 +1,8 @@
 % Defining parameters
 loc_in = './TuneASR';
-fname_in = 's5_filt_segt_badch.set';
-k_in_array = [5,15,25];
-process_array = repmat({'on'},length(k_in_array),1); % 'on' or 'off'
+fname_in = 's5_filt_segt_badch.set'; % dataset with bad channels removed
+k_in_array = [5,15,25]; % list of ASR parameters
+process_array = repmat({'on'},length(k_in_array),1); % 'on' for Rejection or 'off' for Correction
 
 % Calling the wrapper
 [metric, error_log] = evalASRparams(loc_in, fname_in, k_in_array, process_array);
