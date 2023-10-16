@@ -32,7 +32,7 @@
 % outEEG = NEAR_pipeline(params);
 
 
-function outEEG = NEAR_pipeline(params)
+function outEEG = NEAR_performPreprocessing(params)
 
 %% Define variables
 dname = params.dname; % dataset name with extension
@@ -117,5 +117,5 @@ outEEG = pop_saveset(EEG, 'filename',[erase(dname, '.set') '_NEAR_prep.set'],'fi
 
 %% Post-processing (Valid for SSVEP dataset)
 
-performPostProcessing(outEEG, origEEG);
+NEAR_performPostProcessing(outEEG, origEEG);
 

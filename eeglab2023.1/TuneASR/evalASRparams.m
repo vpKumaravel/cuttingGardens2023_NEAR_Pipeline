@@ -119,7 +119,6 @@ loc = [];
 
 for ep=1:length(evData)
     loc(ep)=length(evData{ep}(1,:))/wl;
-    disp(loc(ep));
 end
 
 evData(loc<1)=[];
@@ -132,8 +131,13 @@ if isempty(evData) %If there's not enough data, zero-pad
             count = count + 1;
         end
     end
-    evData= data_pad;
-    disp('Window longer than data! But we got it by zero-padding the data!');
+    if isempty(data_pad)
+        disp('Not enough samples to employ Zero-padding. FTR metric will be set to Zero');
+        return
+    else
+        disp('Window longer than data! Zero-padding technique is employed!');
+        evData= data_pad;
+    end
 end
 
 % Taper option (default taper is square)
