@@ -3,7 +3,7 @@
 % See: https://github.com/vpKumaravel/vpKumaravel.github.io/wiki/Step-by-step-Tutorial-on-Newborns-EEG-Artifact-Removal-(NEAR)-pipeline
 % Author: Velu Prabhakar Kumaravel (FBK; UNITN, Italy, 2018-2023)
 % email: vpr.kumaravel@gmail.com
-% Website: https://github.com/vpKumaravel/vpKumaravel.github.io/wiki/Step-by-step-Tutorial-on-Newborns-EEG-Artifact-Removal-(NEAR)-pipeline
+% Website: https://github.com/vpKumaravel/vpkumaravel.github.io/wiki/Step%E2%80%90by-step-Tutorial-on-Newborns-EEG-Artifact-Removal-(NEAR)-pipeline
 % Feb 2022; 
 
 
@@ -65,7 +65,7 @@ eeglab redraw
 %% Only for ERP
 
 if(isERP) % set isERP = 1 if your input data is ERP
-   EEG = pop_epoch( EEG, erp_event_markers, erp_epoch_duration, 'epochinfo', 'yes'); % markers (eg., {‘Eyes Close’, ‘Eyes Open’}), duration (in ms, eg., [0 1000]) to be defined by user
+   EEG = pop_epoch( EEG, erp_event_markers, erp_epoch_duration, 'epochinfo', 'yes'); % markers (eg., {â€˜Eyes Closeâ€™, â€˜Eyes Openâ€™}), duration (in ms, eg., [0 1000]) to be defined by user
    EEG = pop_rmbase( EEG, baseline_window ,[]); % baseline window (in ms, e.g., [0 200]) to be defined by user
 end
 
